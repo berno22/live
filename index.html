@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+    <style>
+      body {
+        padding: 25px;
+        background-color: black;
+        color: white;
+        font-size: 15px;
+        font-family: Arial, sans-serif;
+      }
+      .icon-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 700px;
+      }
+      h2 Text:first-child {
+        color: white;
+      }
+      h2 Text:last-child {
+        display: none;
+        font-size: 35px;
+        color: red;
+      }
+      #bullet {
+        animation: blink 2s infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      img {
+        width: 50px;
+        transition: width 0.4s;
+        opacity: 0.5;
+      }
+      img.selected {
+        width: 100px;
+        opacity: 1;
+      }
+      #myFrame {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>
+      <Text id="closeFrame" onclick="closeFrame()">Live</Text>
+      <Text id="bullet"> &bull;</Text>
+    </h2>
+
+    <div class="icon-container">
+      <a style="color:#33FF6E;" onclick="loadChannel('qkihgakk.ss')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+      &nbsp;
+      &nbsp;
+      <a style="color:#33FF6E;" onclick="loadChannel('cnbc.usa.us')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+      &nbsp;
+      &nbsp;
+      <a style="color:#33FF6E;" onclick="loadChannel('msnbc.usa.us')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+      &nbsp;
+      &nbsp;
+      <a style="color:#33FF6E;" onclick="loadChannel('cnn.us')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+      &nbsp;
+      &nbsp;
+      <a style="color:#33FF6E;" onclick="loadChannel('fox.news.us')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+      &nbsp;
+      &nbsp;
+      <a style="color:#33FF6E;" onclick="loadChannel('bravo.usa.eastern.us')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+      &nbsp;
+      &nbsp;
+      <a style="color:#33FF6E;" onclick="loadChannel('comedy.central.eastern.us')">
+        <img src="" width="50" onclick="selectImage(this)">
+      </a>
+    </div>
+
+    <br>
+    <br>
+
+    <video id="myPlayer" class="video-js vjs-default-skin" width="700" height="394" controls></video>
+
+    <script>
+      var selectedImage = null;
+      var baseUrl1 = 'https://tvnow.';
+      var baseUrl2 = 'best/api/stream/';
+      var baseUrl3 = 'justina';
+      var baseUrl4 = 'wachter';
+      var baseUrl5 = '@gmail.com/';
+      var baseUrl6 = '936';
+      var baseUrl7 = '205';
+      var baseUrl8 = '/livetv.epg/';
+      var player = videojs('myPlayer');
+
+      function selectImage(img) {
+        if (selectedImage) {
+          selectedImage.classList.remove("selected");
+        }
+        img.classList.add("selected");
+        selectedImage = img;
+      }
+
+      function loadChannel(channel) {
+        var url = baseUrl1 + baseUrl2 + baseUrl3 + baseUrl4 + baseUrl5 + baseUrl6 + baseUrl7 + baseUrl8 + channel + '.m3u8';
+        if (url) {
+          player.src({
+            src: url,
+            type: 'application/x-mpegURL'
+          });
+          player.play();
+          document.getElementById("myPlayer").style.display = "block";
+          document.getElementById("bullet").style.display = "inline";
+        } else {
+          player.pause();
+          document.getElementById("myPlayer").style.display = "none";
+          document.getElementById("bullet").style.display = "none";
+        }
+      }
+
+      function closeFrame() {
+        player.pause();
+        player.src("");
+        document.getElementById("myPlayer").style.display = "none";
+        document.getElementById("bullet").style.display = "none";
+        if (selectedImage) {
+          selectedImage.classList.remove("selected");
+          selectedImage = null;
+        }
+      }
+
+      const channelLinks = document.querySelectorAll('.icon-container a');
+
+      channelLinks.forEach(link => {
+        const onclickValue = link.getAttribute('onclick');
+        const channelName = onclickValue.match(/loadChannel\('(.*)'\)/)[1];
+        const srcLink = `https://media.tv4.live/${channelName}.png`;
+        const img = link.querySelector('img');
+        img.src = srcLink;
+      });
+    </script>
+  </body>
+</html>
