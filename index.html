@@ -46,9 +46,15 @@
         opacity: 1;
       }
       #myPlayer {
-        display: none;
+        display: none; 
         width: 60vw;
         height: 34vw;
+      }
+      .video-js .vjs-control-bar {
+        height: 20px;
+        background: none;
+        padding-top: 20px;
+        background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
       }
     </style>
   </head>
@@ -97,7 +103,7 @@
     <br>
     <br>
 
-    <video id="myPlayer" class="video-js vjs-default-skin" controls></video>
+    <video id="myPlayer" class="video-js" controls></video>
 
     <script>
       var selectedImage = null;
