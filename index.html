@@ -50,16 +50,15 @@
         width: 60vw;
         height: 34vw;
       }
+      #closeFrame {
+        display: none;
+      }
       .video-js .vjs-control-bar {
         height: 0px;
       }
     </style>
   </head>
   <body>
-    <h2>
-      <Text id="closeFrame" onclick="closeFrame()">Live</Text>
-      <Text id="bullet"> &bull;</Text>
-    </h2>
 
     <div class="icon-container">
       <a style="color:#33FF6E;" onclick="loadChannel('qkihgakk.ss')">
@@ -97,8 +96,10 @@
       </a>
     </div>
 
-    <br>
-    <br>
+    <h2>
+      <Text id="closeFrame" onclick="closeFrame()">Live</Text>
+      <Text id="bullet"> &bull;</Text>
+    </h2>
 
     <video id="myPlayer" class="video-js" controls></video>
 
@@ -132,6 +133,7 @@
           player.play();
           document.getElementById("myPlayer").style.display = "block";
           document.getElementById("bullet").style.display = "inline";
+          document.getElementById("closeFrame").style.display = "inline";
         } else {
           player.pause();
           document.getElementById("myPlayer").style.display = "none";
@@ -144,6 +146,7 @@
         player.src("");
         document.getElementById("myPlayer").style.display = "none";
         document.getElementById("bullet").style.display = "none";
+        document.getElementById("closeFrame").style.display = "none";
         if (selectedImage) {
           selectedImage.classList.remove("selected");
           selectedImage = null;
