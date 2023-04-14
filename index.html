@@ -105,14 +105,11 @@
 
     <script>
       var selectedImage = null;
-      var baseUrl1 = 'https://tvnow.';
-      var baseUrl2 = 'best/api/stream/';
       var baseUrl3 = 'justina';
       var baseUrl4 = 'wachter';
-      var baseUrl5 = '@gmail.com/';
+      var baseUrl5 = '@gmail.com';
       var baseUrl6 = '936';
       var baseUrl7 = '205';
-      var baseUrl8 = '/livetv.epg/';
       var player = videojs('myPlayer');
 
       function selectImage(img) {
@@ -124,7 +121,7 @@
       }
 
       function loadChannel(channel) {
-        var url = baseUrl1 + baseUrl2 + baseUrl3 + baseUrl4 + baseUrl5 + baseUrl6 + baseUrl7 + baseUrl8 + channel + '.m3u8';
+        var url = 'https://tvnow.' + 'best/api/stream/' + baseUrl3 + baseUrl4 + baseUrl5 + '/' + baseUrl6 + baseUrl7 + '/livetv.epg/' + channel + '.m3u8';
         if (url) {
           player.src({
             src: url,
@@ -134,6 +131,7 @@
           document.getElementById("myPlayer").style.display = "block";
           document.getElementById("bullet").style.display = "inline";
           document.getElementById("closeFrame").style.display = "inline";
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
           player.pause();
           document.getElementById("myPlayer").style.display = "none";
