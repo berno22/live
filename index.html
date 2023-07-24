@@ -56,6 +56,9 @@
       .video-js .vjs-control-bar {
         height: 0px;
       }
+      .video-js .vjs-fullscreen-control {
+        font-size: 30px;
+      }
     </style>
   </head>
   <body>
@@ -114,8 +117,10 @@
       var baseUrl4 = 'wachter';
       var baseUrl5 = '@gmail.com';
       var baseUrl6 = '936';
-      var baseUrl7 = '205';
-      var player = videojs('myPlayer');
+      var baseUrl7 ='205';
+      var player = videojs('myPlayer', {
+        fullscreenToggle: true
+      });
 
       function selectImage(img) {
         if (selectedImage) {
