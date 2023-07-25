@@ -57,9 +57,6 @@
         height: 0px;
         font-size: 30px;
       }
-      .myPlayer-fullscreen-toggle {
-        opacity: 0.2;
-      }
     </style>
   </head>
   <body>
@@ -119,13 +116,8 @@
       var baseUrl5 = '@gmail.com';
       var baseUrl6 = '936';
       var baseUrl7 ='205';
-      /*var player = videojs('myPlayer', {
-        fullscreenToggle: true
-      });*/
       var player = videojs('myPlayer', {
-        fullscreenToggle: {
-        className: 'myPlayer-fullscreen-toggle'
-        }
+        fullscreenToggle: true
       });
 
       function selectImage(img) {
